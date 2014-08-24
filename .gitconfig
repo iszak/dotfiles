@@ -1,0 +1,37 @@
+[user]
+	name = Iszak Bryan
+	email = iszak@karmarama.com
+
+
+[core]
+    editor = vim
+
+
+[branch]
+    autosetuprebase = always
+
+
+[color]
+    ui = true
+
+[color "status"]
+    added = green bold
+    changed = yellow bold
+    untracked = red bold
+
+
+[alias]
+    d   = diff HEAD
+    dw  = diff HEAD --color-words
+    c   = commit
+    ca  = commit -a
+    cau = commit -au
+    c   = checkout
+    b   = branch
+    rb  = rebase
+    l   = log
+    s   = status
+
+
+[push]
+	default = simple
