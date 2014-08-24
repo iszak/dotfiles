@@ -1,0 +1,6 @@
+# Default editor
+export EDITOR="vim";
+
+# Always colour grep output
+export GREP_OPTIONS="--color=auto";
+
