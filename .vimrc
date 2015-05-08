@@ -1,6 +1,6 @@
 " Use the Solarized Dark theme
-set background=dark
 "colorscheme solarized
+set background=dark
 
 " Show line number
 set number
@@ -11,6 +11,15 @@ set cursorline
 " Use UTF-8 without BOM
 set encoding=utf-8 nobomb
 
+" Enable filetype plugins
+filetype plugin on
+
+" Enable filetype indentation
+filetype indent on
+
+
+" Show matching brackets
+set showmatch
 
 " Enable syntax highlighting
 syntax on
@@ -21,7 +30,10 @@ set cursorline
 " Tabs / Spaces preference
 set shiftwidth=4
 set softtabstop=4
+
+" Use spaces instead of tabs
 set expandtab
+set smarttab
 
 " Auto-indent
 set autoindent
@@ -64,3 +76,17 @@ noremap   <Right>  <NOP>
 
 " Enable mouse in all modes
 set mouse=a
+
+" Disable backups
+set nobackup
+set nowb
+set noswapfile
+
+" Delete trailing white space on save
+func! DeleteTrailingWS()
+  exe "normal mz"
+  %s/\s\+$//ge
+  exe "normal `z"
+endfunc
+
+autocmd BufWrite * :call DeleteTrailingWS()
