@@ -91,3 +91,8 @@ func! DeleteTrailingWS()
 endfunc
 
 autocmd BufWrite * :call DeleteTrailingWS()
+
+:command WQ wq
+:command Wq wq
+:command W w
+:command Q q
