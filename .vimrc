@@ -96,3 +96,7 @@ autocmd BufWrite * :call DeleteTrailingWS()
 :command Wq wq
 :command W w
 :command Q q
+
+let @1='f-i<CR><Esc>l'
+let @2='[{v]}='
+let @3='/(\|,\|[a-z])<CR>a<CR><Esc>'
