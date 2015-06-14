@@ -1,0 +1,42 @@
+servers = (
+  {
+    address = "irc.freenode.org";
+    chatnet = "Freenode";
+    port = "6667";
+    autoconnect = "yes";
+  },
+  {
+    address = "conf.hipchat.com";
+    chatnet = "Hipchat";
+    port = "5223";
+    autoconnect = "no";
+    password = "<password>";
+  }
+);
+
+chatnets = {
+  Freenode = {
+    type = "IRC";
+    nick = "iszak";
+    autosendcmd = "/msg nickserv identify <password>";
+  };
+  Hipchat = { type = "XMPP"; nick = "100014_1134334@chat.hipchat.com"; };
+};
+
+channels = (
+  { name = "#programming"; chatnet = "Freenode"; autojoin = "yes"; },
+  { name = "#regex"; chatnet = "Freenode"; autojoin = "yes"; },
+  { name = "#node.js"; chatnet = "Freenode"; autojoin = "yes"; },
+  { name = "#symfony"; chatnet = "Freenode"; autojoin = "yes"; }
+);
+
+settings = {
+  core = {
+    real_name = "Iszak Bryan";
+    user_name = "iszak";
+    nick = "iszak";
+  };
+  "fe-text" = { actlist_sort = "refnum"; };
+};
+
+ignores = ( { level = "JOINS PARTS QUITS"; network = "Freenode"; } );
