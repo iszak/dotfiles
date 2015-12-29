@@ -1,9 +1,11 @@
+#!/bin/sh
+
 # Path
-if [[ -d /opt/boxen ]]; then
+if [ -d /opt/boxen ]; then
     export PATH="/opt/boxen/bin:$PATH"
 fi
 
-if [[ -d /opt/boxen/homebrew ]]; then
+if [ -d /opt/boxen/homebrew ]; then
     export PATH="/opt/boxen/homebrew/bin:$PATH"
     export PATH="/opt/boxen/homebrew/sbin:$PATH"
 fi
@@ -24,7 +26,7 @@ export SSH_KEY_PATH="$HOME/.ssh/dsa_id"
 
 
 # Boxen
-if [[ -f /opt/boxen/env.sh ]]; then
+if [ -f /opt/boxen/env.sh ]; then
     /opt/boxen/env.sh
 fi
 
@@ -34,15 +36,15 @@ export PATH=$PATH:/usr/local/go/bin
 export GOPATH=~/.go/
 
 # Otto
-if [[ -f /Users/iszak/.otto/otto ]]; then
+if [ -f /Users/iszak/.otto/otto ]; then
     export PATH="/Users/iszak/.otto:$PATH"
 fi
 
 # Packer
-if [[ -f /Users/iszak/.packer/packer ]]; then
+if [ -f /Users/iszak/.packer/packer ]; then
     export PATH="/Users/iszak/.packer:$PATH"
 fi
 
-if [[ -f /opt/boxen/packer ]]; then
+if [ -f /opt/boxen/packer ]; then
     export PATH="/opt/boxen/packer:$PATH"
 fi

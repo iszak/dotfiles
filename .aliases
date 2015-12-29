@@ -1,3 +1,5 @@
+#!/bin/sh
+
 alias ssh=mosh
 alias dockerrmi="docker images -q -f dangling=true | xargs docker rmi"
 alias dockerrm="docker ps -a -q | xargs docker rm"
