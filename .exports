@@ -35,12 +35,12 @@ export GOPATH=~/.go/
 
 # Otto
 if [[ -f /Users/iszak/.otto/otto ]]; then
-    export PATH="/Users/iszak/.otto/:$PATH"
+    export PATH="/Users/iszak/.otto:$PATH"
 fi
 
 # Packer
 if [[ -f /Users/iszak/.packer/packer ]]; then
-    export PATH="/Users/iszak/.packer/:$PATH"
+    export PATH="/Users/iszak/.packer:$PATH"
 fi
 
 if [[ -f /opt/boxen/packer ]]; then
