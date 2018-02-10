@@ -4,7 +4,8 @@
 
 
 [core]
-    editor = vim
+    editor = /usr/local/bin/vim
+    excludesfile = ~/.gitignore_global
 
 
 [branch]
