@@ -1,4 +1,3 @@
 #!/bin/bash
 
-source .aliases
-source .exports
+source .rc

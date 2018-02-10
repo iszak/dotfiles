@@ -9,5 +9,4 @@ plugins=(git jira brew autojump mosh sublime atom cp)
 
 source "$ZSH/oh-my-zsh.sh"
 
-source .aliases
-source .exports
+source .rc

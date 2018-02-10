@@ -1,0 +1,10 @@
+# Use vi mode
+set -o vi
+
+source "$HOME/.aliases"
+source "$HOME/.exports"
+
+# Node.js
+if [ -s "$NVM_DIR/nvm.sh" ]; then
+  source "$NVM_DIR/nvm.sh"
+fi
