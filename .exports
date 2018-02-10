@@ -34,3 +34,8 @@ fi
 if [ -f /Users/iszak/.concourse ]; then
     export PATH="/Users/iszak/.concourse:$PATH"
 fi
+
+# Cargo
+if [ -f "$HOME/.cargo/bin" ]; then
+    export PATH="$HOME/.cargo/bin:$PATH"
+fi
