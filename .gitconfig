@@ -1,6 +1,6 @@
 [user]
-	name = Iszak Bryan
-	email = iszak.bryan@gmail.com
+    name = Iszak Bryan
+    email = iszak.bryan@gmail.com
 
 
 [core]
@@ -34,4 +34,4 @@
 
 
 [push]
-	default = simple
+    default = simple
