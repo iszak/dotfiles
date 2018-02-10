@@ -21,18 +21,18 @@ export PATH=$PATH:/usr/local/go/bin
 export GOPATH=~/.go/
 
 # Otto
-if [ -f /Users/iszak/.otto/otto ]; then
-    export PATH="/Users/iszak/.otto:$PATH"
+if [ -f "$HOME/.otto/otto" ]; then
+    export PATH="$HOME/.otto:$PATH"
 fi
 
 # Packer
-if [ -f /Users/iszak/.packer/packer ]; then
-    export PATH="/Users/iszak/.packer:$PATH"
+if [ -f "$HOME/.packer/packer" ]; then
+    export PATH="$HOME/.packer:$PATH"
 fi
 
 # Concourse
-if [ -f /Users/iszak/.concourse ]; then
-    export PATH="/Users/iszak/.concourse:$PATH"
+if [ -f "$HOME/.concourse" ]; then
+    export PATH="$HOME/.concourse:$PATH"
 fi
 
 # Cargo
