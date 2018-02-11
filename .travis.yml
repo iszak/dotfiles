@@ -1,13 +1,10 @@
 ---
+sudo: required
+
 language: bash
 
-sudo: required
-dist: trusty
-
-before_install:
-  - echo "deb http://archive.ubuntu.com/ubuntu/ wily universe" | sudo tee -a /etc/apt/sources.list
-  - sudo apt-get update -qq
-  - sudo apt-get install -y shellcheck
+services:
+  - docker
 
 script:
-  - shellcheck .bashrc
+  - docker run -w /scripts -v $(pwd):/scripts koalaman/shellcheck .bashrc .rc
