@@ -1,6 +1,38 @@
-" Use the Solarized Dark theme
-"colorscheme solarized
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+
+call vundle#begin()
+
+" Vundle
+Plugin 'VundleVim/Vundle.vim'
+
+" Solarized colour scheme
+Plugin 'altercation/vim-colors-solarized'
+
+" Syntax checking
+Plugin 'vim-syntastic/syntastic'
+
+" Autocomplete
+Plugin 'valloric/youcompleteme'
+
+" JSX
+Plugin 'mxw/vim-jsx'
+
+" Rust
+Plugin 'rust-lang/rust.vim'
+
+call vundle#end()
+filetype plugin indent on
+
+
+" Theme
+" Use dark background
 set background=dark
+
+" Use solarized theme
+colorscheme solarized
 
 " Show line number
 set number
@@ -92,11 +124,29 @@ endfunc
 
 autocmd BufWrite * :call DeleteTrailingWS()
 
+" Fix common typos
 :command WQ wq
 :command Wq wq
 :command W w
 :command Q q
 
-let @1='f-i<CR><Esc>l'
-let @2='[{v]}='
-let @3='/(\|,\|[a-z])<CR>a<CR><Esc>'
+" Add Syntastic warning message to status line
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+" JSX support for .js files
+let g:jsx_ext_required = 0
+
+" Rust format on save
+let g:rustfmt_autosave = 1
+
+" Language checks
+let g:syntastic_rust_checkers = ['cargo', 'rustfmt']
+let g:syntastic_go_checkers = ['go', 'gofmt', 'govet']
+let g:syntastic_javascript_checkers = ['eslint']
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
