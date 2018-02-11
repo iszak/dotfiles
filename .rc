@@ -3,10 +3,14 @@
 # Use vi mode
 set -o vi
 
-source "$HOME/.aliases"
-source "$HOME/.exports"
+# shellcheck source=./.aliases
+. "$HOME/.aliases"
+
+# shellcheck source=./.exports
+. "$HOME/.exports"
 
 # Node.js
-if [ -s "$NVM_DIR/nvm.sh" ]; then
-  source "$NVM_DIR/nvm.sh"
+if [ -s "$HOME/.nvm/nvm.sh" ]; then
+  # shellcheck source=./.nvm/nvm.sh
+  . "$HOME/.nvm/nvm.sh"
 fi
