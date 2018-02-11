@@ -7,4 +7,4 @@ services:
   - docker
 
 script:
-  - docker run -w /scripts -v $(pwd):/scripts koalaman/shellcheck .bashrc .rc
+  - docker run -w /scripts -v $(pwd):/scripts koalaman/shellcheck --external-sources .bashrc .rc
