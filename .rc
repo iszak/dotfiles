@@ -1,3 +1,5 @@
+#!/usr/bin/env sh
+
 # Use vi mode
 set -o vi
 
