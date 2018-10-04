@@ -1,5 +1,5 @@
+" Disable VI compatibility mode
 set nocompatible
-filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
 
@@ -11,20 +11,67 @@ Plugin 'VundleVim/Vundle.vim'
 " Solarized colour scheme
 Plugin 'altercation/vim-colors-solarized'
 
-" Syntax checking
-Plugin 'vim-syntastic/syntastic'
 
-" Autocomplete
-Plugin 'valloric/youcompleteme'
+" Status bar
+Plugin 'vim-airline/vim-airline'
+
+" Always display buffers
+let g:airline#extensions#tabline#enabled = 1
+
+" Enable extensions
+let g:airline_extensions = ["ale", "branch"]
+
+" Enable ALE integration
+let g:airline#extensions#ale#enabled = 1
+
+
+
+" Syntax checking and Autocomplete
+Plugin 'w0rp/ale'
+
+" Enable auto-completion
+let g:ale_completion_enabled = 1
+"let g:ale_completion_delay = 1
+
+" Display brief information about symbols at the cursor
+let g:ale_set_balloons = 1 
+
+
+" Trim white space on save
+" TODO
+"Plugin 'koryschneider/vim-trim'
+"autocmd BufWrite * :call Trim()
+
+" JavaScript
+Plugin 'pangloss/vim-javascript'
 
 " JSX
 Plugin 'mxw/vim-jsx'
 
+" Enable JSX
+let g:jsx_ext_required = 1
+
+
 " Rust
 Plugin 'rust-lang/rust.vim'
 
+" Ruby
+Plugin 'vim-ruby/vim-ruby'
+
 call vundle#end()
-filetype plugin indent on
+
+
+" Enable syntax highlighting
+syntax on
+
+" Enable filetype detection
+filetype on
+
+" Enable filetype-specific indenting
+filetype indent on
+
+" Enable filetype-specific plugins
+filetype plugin on
 
 
 " Theme
@@ -32,7 +79,7 @@ filetype plugin indent on
 set background=dark
 
 " Use solarized theme
-colorscheme solarized
+"colorscheme solarized
 
 " Show line number
 set number
@@ -42,13 +89,6 @@ set cursorline
 
 " Use UTF-8 without BOM
 set encoding=utf-8 nobomb
-
-" Enable filetype plugins
-filetype plugin on
-
-" Enable filetype indentation
-filetype indent on
-
 
 " Show matching brackets
 set showmatch
@@ -69,6 +109,7 @@ set smarttab
 
 " Auto-indent
 set autoindent
+
 " Show invisible characters
 set list
 set listchars=tab:▸\ ,trail:·,eol:¬,nbsp:_
@@ -79,11 +120,11 @@ set hlsearch
 " Ignore case of searches
 set ignorecase
 
-" Smart case
-set smartcase
-
 " Highlight dynamically as pattern is typed
 set incsearch
+
+" Smart case
+set smartcase
 
 " Always show status line
 set laststatus=2
@@ -115,38 +156,8 @@ set nobackup
 set nowb
 set noswapfile
 
-" Delete trailing white space on save
-func! DeleteTrailingWS()
-  exe "normal mz"
-  %s/\s\+$//ge
-  exe "normal `z"
-endfunc
-
-autocmd BufWrite * :call DeleteTrailingWS()
-
 " Fix common typos
 :command WQ wq
 :command Wq wq
 :command W w
 :command Q q
-
-" Add Syntastic warning message to status line
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-" JSX support for .js files
-let g:jsx_ext_required = 0
-
-" Rust format on save
-let g:rustfmt_autosave = 1
-
-" Language checks
-let g:syntastic_rust_checkers = ['cargo', 'rustfmt']
-let g:syntastic_go_checkers = ['go', 'gofmt', 'govet']
-let g:syntastic_javascript_checkers = ['eslint']
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
