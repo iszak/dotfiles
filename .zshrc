@@ -7,8 +7,8 @@ ZSH_THEME="robbyrussell"
 DISABLE_AUTO_TITLE="true"
 ENABLE_CORRECTION="true"
 
-plugins=(git jira brew autojump mosh sublime atom cp)
+plugins=(git)
 
 source "$ZSH/oh-my-zsh.sh"
 
-source .rc
+source "$HOME/.rc"
