@@ -14,3 +14,8 @@ if [ -s "$HOME/.nvm/nvm.sh" ]; then
   # shellcheck source=./.nvm/nvm.sh
   . "$HOME/.nvm/nvm.sh"
 fi
+
+# Ruby
+if [ -f "$(which rbenv)" ]; then
+    eval "$(rbenv init -)"
+fi

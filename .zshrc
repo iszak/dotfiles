@@ -12,7 +12,3 @@ plugins=(git)
 source "$ZSH/oh-my-zsh.sh"
 
 source "$HOME/.rc"
-
-if [ -f "$(which rbenv)" ]; then
-    eval "$(rbenv init -)"
-fi
