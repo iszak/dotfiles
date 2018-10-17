@@ -17,6 +17,10 @@ Plugin 'editorconfig/editorconfig-vim'
 " Status bar
 Plugin 'vim-airline/vim-airline'
 
+" Git Gutter
+Plugin 'airblade/vim-gitgutter'
+
+
 " Always display buffers
 let g:airline#extensions#tabline#enabled = 1
 
