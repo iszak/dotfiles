@@ -48,9 +48,6 @@ Plugin 'pangloss/vim-javascript'
 " JSX
 Plugin 'mxw/vim-jsx'
 
-" Enable JSX
-let g:jsx_ext_required = 1
-
 
 " Rust
 Plugin 'rust-lang/rust.vim'
