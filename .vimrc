@@ -114,7 +114,9 @@ set autoindent
 
 " Show invisible characters
 set list
-set listchars=tab:▸\ ,trail:·,eol:¬,nbsp:_
+set showbreak=\\ 
+set listchars=tab:>-,trail:.,extends:>,precedes:<,nbsp:~,eol:$
+
 
 " Highlight searches
 set hlsearch
