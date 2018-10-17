@@ -30,8 +30,6 @@ let g:airline_extensions = ["ale", "branch"]
 " Enable ALE integration
 let g:airline#extensions#ale#enabled = 1
 
-
-
 " Syntax checking and Autocomplete
 Plugin 'w0rp/ale'
 
@@ -40,10 +38,27 @@ Plugin 'ervandew/supertab'
 
 " Enable auto-completion
 let g:ale_completion_enabled = 1
-"let g:ale_completion_delay = 1
+
+" Disable insertion on complete
+set completeopt+=noinsert
 
 " Display brief information about symbols at the cursor
-let g:ale_set_balloons = 1 
+let b:ale_set_balloons = 1
+
+" Only run linters specified
+let g:ale_linters_explicit = 1
+
+let b:ale_linters = {
+  \"go": ["gobuild", "gofmt", "langserver"],
+  \"javascript": ["eslint", "tsserver"],
+  \"ruby": ["rubocop", "ruby", "solargraph"],
+  \"rust": ["cargo", "rls", "rustc"]
+\}
+
+
+" Always sure sign gutter
+let g:ale_sign_column_always = 1
+
 
 
 " Trim white space on save
