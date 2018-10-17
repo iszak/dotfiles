@@ -17,13 +17,8 @@ export SSH_KEY_PATH="$HOME/.ssh/dsa_id"
 
 
 # Go
-export PATH=$PATH:/usr/local/go/bin
-export GOPATH=~/.go/
-
-# Otto
-if [ -f "$HOME/.otto/otto" ]; then
-    export PATH="$HOME/.otto:$PATH"
-fi
+export GOPATH=~/go
+export PATH="$PATH:$GOPATH/bin"
 
 # Packer
 if [ -f "$HOME/.packer/packer" ]; then
