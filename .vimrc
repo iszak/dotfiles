@@ -11,6 +11,8 @@ Plugin 'VundleVim/Vundle.vim'
 " Solarized colour scheme
 Plugin 'altercation/vim-colors-solarized'
 
+" Editor Config support
+Plugin 'editorconfig/editorconfig-vim'
 
 " Status bar
 Plugin 'vim-airline/vim-airline'
