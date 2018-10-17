@@ -81,7 +81,7 @@ filetype plugin on
 set background=dark
 
 " Use solarized theme
-"colorscheme solarized
+colorscheme solarized
 
 " Show line number
 set number
