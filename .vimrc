@@ -31,6 +31,9 @@ let g:airline#extensions#ale#enabled = 1
 " Syntax checking and Autocomplete
 Plugin 'w0rp/ale'
 
+" Enable tab autocomplete
+Plugin 'ervandew/supertab'
+
 " Enable auto-completion
 let g:ale_completion_enabled = 1
 "let g:ale_completion_delay = 1
