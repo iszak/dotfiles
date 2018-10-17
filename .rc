@@ -10,9 +10,10 @@ set -o vi
 . "$HOME/.exports"
 
 # Node.js
-if [ -s "$HOME/.nvm/nvm.sh" ]; then
+NVM_PATH="$HOME/.nvm/nvm.sh"
+if [ -s "$NVM_PATH" ]; then
   # shellcheck source=./.nvm/nvm.sh
-  . "$HOME/.nvm/nvm.sh"
+  . "$NVM_PATH"
 fi
 
 # Ruby
