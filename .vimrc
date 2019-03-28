@@ -58,6 +58,14 @@ let b:ale_linters = {
   \"rust": ["cargo", "rls", "rustc"]
 \}
 
+let b:ale_fixers = {
+  \"*": ["remove_trailing_lines", "trim_whitespace"],
+  \"go": ["gomod", "goimports"],
+  \"javascript": ["prettier", "eslint"]
+\}
+
+let g:ale_fix_on_save = 1
+
 
 " Always sure sign gutter
 let g:ale_sign_column_always = 1
