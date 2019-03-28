@@ -52,7 +52,7 @@ let b:ale_set_balloons = 1
 let g:ale_linters_explicit = 1
 
 let b:ale_linters = {
-  \"go": ["gobuild", "gofmt", "langserver"],
+  \"go": ["gobuild", "gofmt", "golangserver"],
   \"javascript": ["eslint", "tsserver"],
   \"ruby": ["rubocop", "ruby", "solargraph"],
   \"rust": ["cargo", "rls", "rustc"]
