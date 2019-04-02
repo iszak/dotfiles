@@ -20,3 +20,14 @@ fi
 if [ -f "$(which rbenv)" ]; then
     eval "$(rbenv init -)"
 fi
+
+# ZFZ
+FZF_KEY_BINDING_PATH="/usr/share/fzf/key-bindings.$(echo $SHELL | tr '[:upper:]' '[:lower:]')"
+if [ -f "${FZF_KEY_BINDING_PATH}" ]; then
+    source "${FZF_KEY_BINDING_PATH}"
+fi
+
+FZF_COMPLETION_PATH="/usr/share/fzf/completion.$(echo $SHELL | tr '[:upper:]' '[:lower:]')"
+if [ -f "${FZF_COMPLETION_PATH}" ]; then
+    source "${FZF_COMPLETION_PATH}"
+fi
