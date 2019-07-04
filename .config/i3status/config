@@ -34,10 +34,9 @@ memory {
         threshold_critical = "10%"
 }
 
-
 wireless wlp4s0 {
-        format_up = "\\|/: up (%quality at %essid )"
-        format_down = "\\|/: down"
+        format_up = "WIFI: %essid @%quality"
+        format_down = "WIFI: Down"
 }
 
 battery 0 {
