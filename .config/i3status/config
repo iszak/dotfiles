@@ -10,6 +10,7 @@ general {
 }
 
 order += "cpu_usage"
+order += "load"
 order += "memory"
 order += "wireless wlp4s0"
 order += "battery 0"
@@ -20,6 +21,11 @@ cpu_usage {
         format = "CPU: %usage"
         degraded_threshold = 25
         max_threshold = 75
+}
+
+load {
+        format = "LOAD: %1min %5min %15min"
+        max_threshold = "0.75"
 }
 
 memory {
