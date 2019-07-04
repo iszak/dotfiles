@@ -29,7 +29,7 @@ load {
 }
 
 memory {
-        format = "RAM: %percentage_used"
+        format = "RAM: %percentage_used/%percentage_free/%percentage_shared"
         threshold_degraded = "25%"
         threshold_critical = "10%"
 }
