@@ -19,13 +19,13 @@ order += "tztime local"
 
 cpu_usage {
         format = "CPU: %usage"
-        degraded_threshold = 25
-        max_threshold = 75
+        degraded_threshold = 50
+        max_threshold = 85
 }
 
 load {
         format = "LOAD: %1min %5min %15min"
-        max_threshold = "0.75"
+        max_threshold = "3.00"
 }
 
 memory {
