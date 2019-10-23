@@ -108,10 +108,10 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id amixer sset 'Master' 1+
 # System Mode
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id exec i3lock --color=000000 --show-failed-attempts --ignore-empty-password --no-unlock-indicator
+    bindsym l exec --no-startup-id exec i3lock --color=000000 --show-failed-attempts --ignore-empty-password
     bindsym e exec --no-startup-id exec i3-msg exit
-    bindsym s exec --no-startup-id exec i3lock --color=000000 --show-failed-attempts --ignore-empty-password --no-unlock-indicator && systemctl suspend
-    bindsym h exec --no-startup-id exec i3lock --color=000000 --show-failed-attempts --ignore-empty-password --no-unlock-indicator && systemctl hibernate
+    bindsym s exec --no-startup-id exec i3lock --color=000000 --show-failed-attempts --ignore-empty-password && systemctl suspend
+    bindsym h exec --no-startup-id exec i3lock --color=000000 --show-failed-attempts --ignore-empty-password && systemctl hibernate
     bindsym r exec --no-startup-id exec systemctl reboot
     bindsym Shift+s exec --no-startup-id systemctl poweroff
 
