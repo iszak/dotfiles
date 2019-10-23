@@ -182,6 +182,12 @@ noremap   <Right>  <NOP>
 " Enable mouse in all modes
 set mouse=a
 
+" Show command being entered
+set showcmd
+
+" Set column marker
+set colorcolumn=80,120
+
 " Disable backups
 set nobackup
 set nowb
