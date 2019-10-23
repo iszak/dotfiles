@@ -12,7 +12,7 @@ general {
 order += "cpu_usage"
 order += "load"
 order += "memory"
-order += "wireless wlp4s0"
+order += "wireless wlan0"
 order += "battery 0"
 order += "volume master"
 order += "tztime local"
@@ -34,7 +34,7 @@ memory {
         threshold_critical = "10%"
 }
 
-wireless wlp4s0 {
+wireless wlan0 {
         format_up = "WIFI: %essid @%quality"
         format_down = "WIFI: Down"
 }
