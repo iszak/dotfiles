@@ -30,20 +30,30 @@ let g:airline_extensions = ["ale", "branch"]
 " Enable ALE integration
 let g:airline#extensions#ale#enabled = 1
 
-" Syntax checking and Autocomplete
+" ALE go to definition
+"nnoremap gd :ALEGoToDefinition<cr>
+
+" Syntax checking, Linters, Fixers and Autocomplete
 Plugin 'w0rp/ale'
 
 " Enable tab autocomplete
 Plugin 'ervandew/supertab'
 
 " Enable auto-completion
-let g:ale_completion_enabled = 1
+let g:ale_completion_enabled = 0
 
 " Disable insertion on complete
 set completeopt+=noinsert
 
+" Show menu
+set completeopt+=menu
+
+" Show preview menu
+set completeopt+=preview
+
+
 " Display brief information about symbols at the cursor
-let b:ale_set_balloons = 1
+let b:ale_set_balloons = 0
 
 " Only run linters specified
 let g:ale_linters_explicit = 1
@@ -67,12 +77,53 @@ let g:ale_fix_on_save = 1
 " Always sure sign gutter
 let g:ale_sign_column_always = 1
 
+Plugin 'prabirshrestha/async.vim'
+Plugin 'prabirshrestha/asyncomplete.vim'
+Plugin 'prabirshrestha/vim-lsp'
+Plugin 'prabirshrestha/asyncomplete-lsp.vim'
+
+Plugin 'ryanolsonx/vim-lsp-javascript'
+
+if executable('javascript-typescript-stdio')
+  au User lsp_setup call lsp#register_server({
+    \ 'name': 'javascript support using typescript-language-server',
+    \ 'cmd': { server_info->[&shell, &shellcmdflag, 'javascript-typescript-stdio']},
+    \ 'root_uri': { server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_directory(lsp#utils#get_buffer_path(), '.git/..'))},
+    \ 'whitelist': ['javascript', 'javascript.jsx']
+    \ })
+endif
+
+if executable('html-languageserver')
+  au User lsp_setup call lsp#register_server({
+      \ 'name': 'html-languageserver',
+      \ 'cmd': {server_info->[&shell, &shellcmdflag, 'html-languageserver --stdio']},
+      \ 'root_uri': { server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_directory(lsp#utils#get_buffer_path(), '.git/..'))},
+      \ 'whitelist': ['html'],
+      \ })
+endif
 
 
-" Trim white space on save
-" TODO
-"Plugin 'koryschneider/vim-trim'
-"autocmd BufWrite * :call Trim()
+if executable('css-languageserver')
+  au User lsp_setup call lsp#register_server({
+      \ 'name': 'css-languageserver',
+      \ 'cmd': {server_info->[&shell, &shellcmdflag, 'css-languageserver --stdio']},
+      \ 'root_uri': { server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_directory(lsp#utils#get_buffer_path(), '.git/..'))},
+      \ 'whitelist': ['css'],
+      \ })
+endif
+
+if executable('solargraph')
+  au User lsp_setup call lsp#register_server({
+              \ 'name': 'solargraph',
+              \ 'cmd': {server_info->[&shell, &shellcmdflag, 'solargraph stdio']},
+              \ 'initialization_options': {"diagnostics": "true"},
+              \ 'root_uri': { server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_directory(lsp#utils#get_buffer_path(), '.git/..'))},
+              \ 'whitelist': ['ruby'],
+              \ })
+endif
+
+nnoremap gd :LspDeclaration<cr>
+
 
 " JavaScript
 Plugin 'pangloss/vim-javascript'
@@ -141,7 +192,7 @@ set autoindent
 
 " Show invisible characters
 set list
-set showbreak=\\ 
+set showbreak=\\
 set listchars=tab:>-,trail:.,extends:>,precedes:<,nbsp:~,eol:$
 
 
@@ -198,3 +249,10 @@ set noswapfile
 :command Wq wq
 :command W w
 :command Q q
+
+" Reset go omnifunc
+" TODO: Move to ftplugin file
+" autocmd FileType go setlocal omnifunc=
+autocmd FileType go setlocal softtabstop=8
+autocmd FileType go setlocal shiftwidth=8
+autocmd FileType go nnoremap gd :GoDef<cr>
