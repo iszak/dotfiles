@@ -131,3 +131,6 @@ bindsym --border button2 nop
 bindsym --border button3 nop
 
 focus_follows_mouse no
+
+bindsym Print exec scrot '%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f ~/Pictures/'
+
