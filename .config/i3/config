@@ -81,6 +81,11 @@ bindsym $mod+Shift+r restart
 # Status Bar
 bar {
         status_command i3status
+
+
+        bindsym button1 nop
+        bindsym button2 nop
+        bindsym button3 nop
 }
 
 # Terminal
