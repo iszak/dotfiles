@@ -123,3 +123,11 @@ mode "$mode_system" {
     bindsym Escape mode "default"
 }
 bindsym $mod+Shift+End mode "$mode_system"
+
+
+# Disable mouse on bar
+bindsym --border button1 nop
+bindsym --border button2 nop
+bindsym --border button3 nop
+
+focus_follows_mouse no
