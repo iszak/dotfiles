@@ -52,10 +52,12 @@ let b:ale_linters = {
   \"rust": ["cargo", "rls", "rustc"]
 \}
 
-let b:ale_fixers = {
+let g:ale_fixers = {
   \"*": ["remove_trailing_lines", "trim_whitespace"],
-  \"go": ["gomod", "goimports"],
-  \"javascript": ["prettier", "eslint"]
+  \"css": ["stylelint"],
+  \"go": ["gofmt", "goimports", "gomod"],
+  \"ruby": ["rubocop"],
+  \"javascript": ["eslint", "prettier"]
 \}
 
 let g:ale_fix_on_save = 1
