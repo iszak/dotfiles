@@ -30,26 +30,15 @@ let g:airline_extensions = ["ale", "branch"]
 " Enable ALE integration
 let g:airline#extensions#ale#enabled = 1
 
-" ALE go to definition
-"nnoremap gd :ALEGoToDefinition<cr>
-
-" Syntax checking, Linters, Fixers and Autocomplete
-Plugin 'w0rp/ale'
-
-" Enable tab autocomplete
-Plugin 'ervandew/supertab'
-
-" Enable auto-completion
+" Display brief information about symbols at t" Disable auto-completion as we use LSP
 let g:ale_completion_enabled = 0
 
 " Only run linters specified
 let g:ale_linters_explicit = 1
 
-let b:ale_linters = {
-  \"go": ["gobuild", "gofmt", "golangserver"],
-  \"javascript": ["eslint", "tsserver"],
-  \"ruby": ["rubocop", "ruby", "solargraph"],
-  \"rust": ["cargo", "rls", "rustc"]
+let g:ale_linters = {
+  \"ruby": ["ruby"],
+  \"rust": ["cargo", "rustc"]
 \}
 
 let g:ale_fixers = {
@@ -60,26 +49,33 @@ let g:ale_fixers = {
   \"javascript": ["eslint", "prettier"]
 \}
 
-let g:ale_fix_on_save = 1
+autocmd FileType rust autocmd BufWritePre <buffer> LspDocumentFormatSync
 
+" Run fixers on save
+let g:ale_fix_on_save = 1
 
 " Always sure sign gutter
 let g:ale_sign_column_always = 1
+
+
+" Syntax checking, Linters, Fixers and Autocomplete
+Plugin 'w0rp/ale'
+
+" Enable tab autocomplete
+Plugin 'ervandew/supertab'
 
 Plugin 'prabirshrestha/async.vim'
 Plugin 'prabirshrestha/asyncomplete.vim'
 Plugin 'prabirshrestha/vim-lsp'
 Plugin 'prabirshrestha/asyncomplete-lsp.vim'
 
-Plugin 'ryanolsonx/vim-lsp-javascript'
-
-if executable('javascript-typescript-stdio')
-  au User lsp_setup call lsp#register_server({
-    \ 'name': 'javascript support using typescript-language-server',
-    \ 'cmd': { server_info->[&shell, &shellcmdflag, 'javascript-typescript-stdio']},
-    \ 'root_uri': { server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_directory(lsp#utils#get_buffer_path(), '.git/..'))},
-    \ 'whitelist': ['javascript', 'javascript.jsx']
-    \ })
+if executable('typescript-language-server')
+    au User lsp_setup call lsp#register_server({
+      \ 'name': 'javascript support using typescript-language-server',
+      \ 'cmd': { server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
+      \ 'root_uri': { server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_directory(lsp#utils#get_buffer_path(), '.git/..'))},
+      \ 'whitelist': ['javascript', 'javascript.jsx', 'javascriptreact']
+      \ })
 endif
 
 if executable('html-languageserver')
@@ -111,8 +107,24 @@ if executable('solargraph')
               \ })
 endif
 
-nnoremap gd :LspDeclaration<cr>
+if executable('rls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'rls',
+        \ 'cmd': {server_info->['rustup', 'run', 'stable', 'rls']},
+        \ 'workspace_config': {'rust': {'clippy_preference': 'on'}},
+        \ 'root_uri': { server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_directory(lsp#utils#get_buffer_path(), '.git/..'))},
+        \ 'whitelist': ['rust'],
+        \ })
+endif
 
+nnoremap <silent> gd :LspDefinition<CR>
+nnoremap <silent> K :LspHover<CR>
+nnoremap <silent> <F2> :LspRename<CR>
+nnoremap <silent> = :LspDocumentRangeFormat<CR>
+
+set foldmethod=expr
+  \ foldexpr=lsp#ui#vim#folding#foldexpr()
+  \ foldtext=lsp#ui#vim#folding#foldtext()
 
 " JavaScript
 Plugin 'pangloss/vim-javascript'
