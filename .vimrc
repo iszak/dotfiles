@@ -122,9 +122,12 @@ nnoremap <silent> K :LspHover<CR>
 nnoremap <silent> <F2> :LspRename<CR>
 nnoremap <silent> = :LspDocumentRangeFormat<CR>
 
-set foldmethod=expr
-  \ foldexpr=lsp#ui#vim#folding#foldexpr()
-  \ foldtext=lsp#ui#vim#folding#foldtext()
+"let g:lsp_use_event_queue = 1
+"
+"set foldlevelstart=20
+"set foldmethod=expr
+"  \ foldexpr=lsp#ui#vim#folding#foldexpr()
+"  \ foldtext=lsp#ui#vim#folding#foldtext()
 
 " JavaScript
 Plugin 'pangloss/vim-javascript'
