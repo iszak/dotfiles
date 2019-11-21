@@ -129,8 +129,7 @@ nnoremap gd :LspDeclaration<cr>
 Plugin 'pangloss/vim-javascript'
 
 " JSX
-Plugin 'mxw/vim-jsx'
-
+Plugin 'MaxMEllon/vim-jsx-pretty'
 
 " Rust
 Plugin 'rust-lang/rust.vim'
