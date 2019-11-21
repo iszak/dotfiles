@@ -42,19 +42,6 @@ Plugin 'ervandew/supertab'
 " Enable auto-completion
 let g:ale_completion_enabled = 0
 
-" Disable insertion on complete
-set completeopt+=noinsert
-
-" Show menu
-set completeopt+=menu
-
-" Show preview menu
-set completeopt+=preview
-
-
-" Display brief information about symbols at the cursor
-let b:ale_set_balloons = 0
-
 " Only run linters specified
 let g:ale_linters_explicit = 1
 
