@@ -39,6 +39,11 @@ wireless wlan0 {
         format_down = "WIFI: Down"
 }
 
+ethernet enp4s0 {
+        format_up = "ETH: %ip"
+        format_down = "ETH: Down"
+}
+
 battery 0 {
         format = "⚡: %percentage"
         path = "/sys/class/power_supply/BAT%d/uevent"
