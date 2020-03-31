@@ -256,7 +256,7 @@ set colorcolumn=80,120
 
 " Disable backups
 set nobackup
-set nowb
+set nowritebackup
 set noswapfile
 
 " Fix common typos
