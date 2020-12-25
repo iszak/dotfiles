@@ -22,12 +22,12 @@ if [ -f "$(which rbenv)" ]; then
 fi
 
 # ZFZ
-FZF_KEY_BINDING_PATH="/usr/share/fzf/key-bindings.$(basename "$SHELL")"
+FZF_KEY_BINDING_PATH="/usr/share/doc/fzf/examples/key-bindings.$(basename "$SHELL")"
 if [ -f "${FZF_KEY_BINDING_PATH}" ]; then
     . "${FZF_KEY_BINDING_PATH}"
 fi
 
-FZF_COMPLETION_PATH="/usr/share/fzf/completion.$(basename "$SHELL")"
+FZF_COMPLETION_PATH="/usr/share/doc/fzf/examples/completion.$(basename "$SHELL")"
 if [ -f "${FZF_COMPLETION_PATH}" ]; then
     . "${FZF_COMPLETION_PATH}"
 fi
