@@ -22,15 +22,10 @@ export PATH="$PATH:$GOPATH/bin"
 
 # Packer
 if [ -f "$HOME/.packer/packer" ]; then
-    export PATH="$HOME/.packer:$PATH"
-fi
-
-# Concourse
-if [ -f "$HOME/.concourse" ]; then
-    export PATH="$HOME/.concourse:$PATH"
+  export PATH="$HOME/.packer:$PATH"
 fi
 
 # Cargo
 if [ -f "$HOME/.cargo/bin" ]; then
-    export PATH="$HOME/.cargo/bin:$PATH"
+  export PATH="$HOME/.cargo/bin:$PATH"
 fi
