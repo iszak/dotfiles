@@ -51,6 +51,16 @@ let g:ale_fixers = {
 
 autocmd FileType rust autocmd BufWritePre <buffer> LspDocumentFormatSync
 
+let g:lsp_preview_float = 1
+
+let g:lsp_diagnostics_enabled = 1
+let g:lsp_diagnostics_highlights_delay = 0
+let g:lsp_diagnostics_echo_cursor = 1
+let g:lsp_diagnostics_echo_delay = 0
+
+let g:lsp_completion_documentation_enabled = 1
+let g:lsp_completion_documentation_delay = 0
+
 " Run fixers on save
 let g:ale_fix_on_save = 1
 
