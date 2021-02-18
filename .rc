@@ -23,6 +23,11 @@ if [ -f "$(which rbenv)" ]; then
   eval "$(rbenv init -)"
 fi
 
+# Z / Autojumper
+if [ -f "$(which zoxide)" ]; then
+  eval "$(zoxide init $SHELL_NAME)"
+fi
+
 # ZFZ
 FZF_KEY_BINDING_PATH="/usr/share/doc/fzf/examples/key-bindings.${SHELL_NAME}"
 if [ -f "${FZF_KEY_BINDING_PATH}" ]; then
