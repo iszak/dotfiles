@@ -266,6 +266,11 @@ set showcmd
 " Set column marker
 set colorcolumn=80,120
 
+" Enable undo file
+set undofile
+set undodir=~/.vim/undo
+set undolevels=16384
+
 " Disable backups
 set nobackup
 set nowritebackup
