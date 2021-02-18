@@ -170,6 +170,8 @@ filetype plugin on
 
 
 " Theme
+let g:solarized_termcolors=256
+
 " Use dark background
 set background=dark
 
