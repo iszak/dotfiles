@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+SHELL_NAME="$(basename "$SHELL")"
+
 # Use vi mode
 set -o vi
 
@@ -18,16 +20,16 @@ fi
 
 # Ruby
 if [ -f "$(which rbenv)" ]; then
-    eval "$(rbenv init -)"
+  eval "$(rbenv init -)"
 fi
 
 # ZFZ
-FZF_KEY_BINDING_PATH="/usr/share/doc/fzf/examples/key-bindings.$(basename "$SHELL")"
+FZF_KEY_BINDING_PATH="/usr/share/doc/fzf/examples/key-bindings.${SHELL_NAME}"
 if [ -f "${FZF_KEY_BINDING_PATH}" ]; then
-    . "${FZF_KEY_BINDING_PATH}"
+  . "${FZF_KEY_BINDING_PATH}"
 fi
 
-FZF_COMPLETION_PATH="/usr/share/doc/fzf/examples/completion.$(basename "$SHELL")"
+FZF_COMPLETION_PATH="/usr/share/doc/fzf/examples/completion.${SHELL_NAME}"
 if [ -f "${FZF_COMPLETION_PATH}" ]; then
-    . "${FZF_COMPLETION_PATH}"
+  . "${FZF_COMPLETION_PATH}"
 fi
