@@ -276,6 +276,9 @@ set nobackup
 set nowritebackup
 set noswapfile
 
+" Make a buffer hidden when abandoned
+set hidden
+
 " Fix common typos
 :command WQ wq
 :command Wq wq
