@@ -21,12 +21,12 @@ export GOPATH=~/go
 export PATH="$PATH:$GOPATH/bin"
 
 # Packer
-if [ -f "$HOME/.packer/packer" ]; then
+if [ -d "$HOME/.packer/packer" ]; then
   export PATH="$HOME/.packer:$PATH"
 fi
 
 # Cargo
-if [ -f "$HOME/.cargo/bin" ]; then
+if [ -d "$HOME/.cargo/bin" ]; then
   export PATH="$HOME/.cargo/bin:$PATH"
 fi
 
