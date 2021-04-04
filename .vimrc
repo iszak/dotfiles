@@ -218,8 +218,8 @@ noremap   <Down>   <NOP>
 noremap   <Left>   <NOP>
 noremap   <Right>  <NOP>
 
-" Enable mouse in all modes
-set mouse=a
+" Disable mouse in all modes
+set mouse-=a
 
 " Show command being entered
 set showcmd
