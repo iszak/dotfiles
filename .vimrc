@@ -25,29 +25,7 @@ Plugin 'airblade/vim-gitgutter'
 let g:airline#extensions#tabline#enabled = 1
 
 " Enable extensions
-let g:airline_extensions = ["ale", "branch"]
-
-" Enable ALE integration
-let g:airline#extensions#ale#enabled = 1
-
-" Display brief information about symbols at t" Disable auto-completion as we use LSP
-let g:ale_completion_enabled = 0
-
-" Only run linters specified
-let g:ale_linters_explicit = 1
-
-let g:ale_linters = {
-  \"ruby": ["ruby"],
-  \"rust": ["cargo", "rustc"]
-\}
-
-let g:ale_fixers = {
-  \"*": ["remove_trailing_lines", "trim_whitespace"],
-  \"css": ["stylelint"],
-  \"go": ["gofmt", "goimports", "gomod"],
-  \"ruby": ["rubocop"],
-  \"javascript": ["eslint", "prettier"]
-\}
+let g:airline_extensions = ["branch"]
 
 autocmd FileType rust autocmd BufWritePre <buffer> LspDocumentFormatSync
 
@@ -60,16 +38,6 @@ let g:lsp_diagnostics_echo_delay = 0
 
 let g:lsp_completion_documentation_enabled = 1
 let g:lsp_completion_documentation_delay = 0
-
-" Run fixers on save
-let g:ale_fix_on_save = 1
-
-" Always sure sign gutter
-let g:ale_sign_column_always = 1
-
-
-" Syntax checking, Linters, Fixers and Autocomplete
-Plugin 'w0rp/ale'
 
 " Enable tab autocomplete
 Plugin 'ervandew/supertab'
