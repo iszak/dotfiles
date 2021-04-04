@@ -95,6 +95,12 @@ if executable('rls')
 endif
 
 nnoremap <silent> gd :LspDefinition<CR>
+nnoremap <silent> gD :LspDeclaration<CR>
+nnoremap <silent> gs :LspDocumentSymbolSearch<CR>
+nnoremap <silent> gS :LspWorkspaceSymbolSearch<CR>
+nnoremap <silent> gr :LspReferences<CR>
+nnoremap <silent> gi :LspImplementation<CR>
+nnoremap <silent> gt :LspTypeDefinition<CR>
 nnoremap <silent> K :LspHover<CR>
 nnoremap <silent> <F2> :LspRename<CR>
 nnoremap <silent> = :LspDocumentRangeFormat<CR>
