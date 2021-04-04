@@ -245,3 +245,17 @@ set hidden
 :command Wq wq
 :command W w
 :command Q q
+
+" Git Gutter
+" Reduce update delay
+set updatetime=100
+
+" Always show sign column
+set signcolumn=yes
+
+" Remove sign column colour
+highlight clear SignColumn
+highlight GitGutterAdd ctermfg=green
+highlight GitGutterChange ctermfg=yellow
+highlight GitGutterDelete ctermfg=red
+highlight GitGutterChangeDelete ctermfg=yellow
