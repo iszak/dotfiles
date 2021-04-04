@@ -20,13 +20,6 @@ Plugin 'vim-airline/vim-airline'
 " Git Gutter
 Plugin 'airblade/vim-gitgutter'
 
-
-" Always display buffers
-let g:airline#extensions#tabline#enabled = 1
-
-" Enable extensions
-let g:airline_extensions = ["branch"]
-
 autocmd FileType rust autocmd BufWritePre <buffer> LspDocumentFormatSync
 
 let g:lsp_preview_float = 1
@@ -257,6 +250,14 @@ set hidden
 :command Wq wq
 :command W w
 :command Q q
+
+" Airline
+" Always display buffers
+let g:airline#extensions#tabline#enabled = 1
+
+" Enable extensions
+let g:airline_extensions = ["branch"]
+
 
 " Git Gutter
 " Reduce update delay
