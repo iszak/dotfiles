@@ -46,7 +46,7 @@ if executable('typescript-language-server')
       \ 'name': 'javascript support using typescript-language-server',
       \ 'cmd': { server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
       \ 'root_uri': { server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_directory(lsp#utils#get_buffer_path(), '.git/..'))},
-      \ 'whitelist': ['typescript', 'typescript.tsx', 'typescriptreact', 'javascript', 'javascript.jsx', 'javascriptreact']
+      \ 'allowlist': ['typescript', 'typescript.tsx', 'typescriptreact', 'javascript', 'javascript.jsx', 'javascriptreact']
       \ })
 endif
 
@@ -55,7 +55,7 @@ if executable('html-languageserver')
       \ 'name': 'html-languageserver',
       \ 'cmd': {server_info->[&shell, &shellcmdflag, 'html-languageserver --stdio']},
       \ 'root_uri': { server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_directory(lsp#utils#get_buffer_path(), '.git/..'))},
-      \ 'whitelist': ['html'],
+      \ 'allowlist': ['html'],
       \ })
 endif
 
@@ -64,7 +64,7 @@ if executable('css-languageserver')
       \ 'name': 'css-languageserver',
       \ 'cmd': {server_info->[&shell, &shellcmdflag, 'css-languageserver --stdio']},
       \ 'root_uri': { server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_directory(lsp#utils#get_buffer_path(), '.git/..'))},
-      \ 'whitelist': ['css'],
+      \ 'allowlist': ['css'],
       \ })
 endif
 
@@ -74,7 +74,7 @@ if executable('solargraph')
               \ 'cmd': {server_info->[&shell, &shellcmdflag, 'solargraph stdio']},
               \ 'initialization_options': {"diagnostics": "true"},
               \ 'root_uri': { server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_directory(lsp#utils#get_buffer_path(), '.git/..'))},
-              \ 'whitelist': ['ruby'],
+              \ 'allowlist': ['ruby'],
               \ })
 endif
 
@@ -82,7 +82,7 @@ if executable('vim-language-server')
     au User lsp_setup call lsp#register_server({
                 \ 'name': 'vim-language-server',
                 \ 'cmd': {server_info->['vim-language-server', '--stdio']},
-                \ 'whitelist': ['vim'],
+                \ 'allowlist': ['vim'],
                 \ 'initialization_options': {
                 \   'vimruntime': $VIMRUNTIME,
                 \   'runtimepath': &rtp,
@@ -95,7 +95,7 @@ if executable('rls')
         \ 'cmd': {server_info->['rustup', 'run', 'stable', 'rls']},
         \ 'workspace_config': {'rust': {'clippy_preference': 'on'}},
         \ 'root_uri': { server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_directory(lsp#utils#get_buffer_path(), '.git/..'))},
-        \ 'whitelist': ['rust'],
+        \ 'allowlist': ['rust'],
         \ })
 endif
 
