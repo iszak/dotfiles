@@ -115,19 +115,6 @@ Plugin 'MaxMEllon/vim-jsx-pretty'
 " Rust
 Plugin 'rust-lang/rust.vim'
 
-" Go
-" Disable fmt as it's handled by ALE
-let g:go_fmt_autosave = 0
-let g:go_mod_fmt_autosave = 0
-
-" Disable code completion with omnifunc
-let g:go_code_completion_enabled = 0
-
-" Disable go to definition as it's handled by LSP
-let g:go_def_mapping_enabled = 0
-
-Plugin 'fatih/vim-go'
-
 " Ruby
 Plugin 'vim-ruby/vim-ruby'
 
