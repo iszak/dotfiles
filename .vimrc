@@ -20,17 +20,6 @@ Plugin 'vim-airline/vim-airline'
 " Git Gutter
 Plugin 'airblade/vim-gitgutter'
 
-autocmd FileType rust autocmd BufWritePre <buffer> LspDocumentFormatSync
-
-let g:lsp_preview_float = 1
-
-let g:lsp_diagnostics_enabled = 1
-let g:lsp_diagnostics_highlights_delay = 0
-let g:lsp_diagnostics_echo_cursor = 1
-let g:lsp_diagnostics_echo_delay = 0
-
-let g:lsp_completion_documentation_enabled = 1
-let g:lsp_completion_documentation_delay = 0
 
 " Enable tab autocomplete
 Plugin 'ervandew/supertab'
@@ -40,82 +29,6 @@ Plugin 'prabirshrestha/asyncomplete.vim'
 Plugin 'prabirshrestha/asyncomplete-lsp.vim'
 
 Plugin 'prabirshrestha/vim-lsp'
-
-if executable('typescript-language-server')
-    au User lsp_setup call lsp#register_server({
-      \ 'name': 'javascript support using typescript-language-server',
-      \ 'cmd': { server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
-      \ 'root_uri': { server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_directory(lsp#utils#get_buffer_path(), '.git/..'))},
-      \ 'allowlist': ['typescript', 'typescript.tsx', 'typescriptreact', 'javascript', 'javascript.jsx', 'javascriptreact']
-      \ })
-endif
-
-if executable('html-languageserver')
-  au User lsp_setup call lsp#register_server({
-      \ 'name': 'html-languageserver',
-      \ 'cmd': {server_info->[&shell, &shellcmdflag, 'html-languageserver --stdio']},
-      \ 'root_uri': { server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_directory(lsp#utils#get_buffer_path(), '.git/..'))},
-      \ 'allowlist': ['html'],
-      \ })
-endif
-
-if executable('css-languageserver')
-  au User lsp_setup call lsp#register_server({
-      \ 'name': 'css-languageserver',
-      \ 'cmd': {server_info->[&shell, &shellcmdflag, 'css-languageserver --stdio']},
-      \ 'root_uri': { server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_directory(lsp#utils#get_buffer_path(), '.git/..'))},
-      \ 'allowlist': ['css'],
-      \ })
-endif
-
-if executable('solargraph')
-  au User lsp_setup call lsp#register_server({
-              \ 'name': 'solargraph',
-              \ 'cmd': {server_info->[&shell, &shellcmdflag, 'solargraph stdio']},
-              \ 'initialization_options': {"diagnostics": "true"},
-              \ 'root_uri': { server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_directory(lsp#utils#get_buffer_path(), '.git/..'))},
-              \ 'allowlist': ['ruby'],
-              \ })
-endif
-
-if executable('vim-language-server')
-    au User lsp_setup call lsp#register_server({
-                \ 'name': 'vim-language-server',
-                \ 'cmd': {server_info->['vim-language-server', '--stdio']},
-                \ 'allowlist': ['vim'],
-                \ 'initialization_options': {
-                \   'vimruntime': $VIMRUNTIME,
-                \   'runtimepath': &rtp,
-                \ }})
-endif
-
-if executable('rls')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'rls',
-        \ 'cmd': {server_info->['rustup', 'run', 'stable', 'rls']},
-        \ 'workspace_config': {'rust': {'clippy_preference': 'on'}},
-        \ 'root_uri': { server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_directory(lsp#utils#get_buffer_path(), '.git/..'))},
-        \ 'allowlist': ['rust'],
-        \ })
-endif
-
-nnoremap <silent> gd :LspDefinition<CR>
-nnoremap <silent> gD :LspDeclaration<CR>
-nnoremap <silent> gs :LspDocumentSymbolSearch<CR>
-nnoremap <silent> gS :LspWorkspaceSymbolSearch<CR>
-nnoremap <silent> gr :LspReferences<CR>
-nnoremap <silent> gi :LspImplementation<CR>
-nnoremap <silent> gt :LspTypeDefinition<CR>
-nnoremap <silent> K :LspHover<CR>
-nnoremap <silent> <F2> :LspRename<CR>
-nnoremap <silent> = :LspDocumentRangeFormat<CR>
-
-"let g:lsp_use_event_queue = 1
-"
-"set foldlevelstart=20
-"set foldmethod=expr
-"  \ foldexpr=lsp#ui#vim#folding#foldexpr()
-"  \ foldtext=lsp#ui#vim#folding#foldtext()
 
 " JavaScript
 Plugin 'pangloss/vim-javascript'
@@ -272,3 +185,89 @@ highlight GitGutterAdd ctermfg=green
 highlight GitGutterChange ctermfg=yellow
 highlight GitGutterDelete ctermfg=red
 highlight GitGutterChangeDelete ctermfg=yellow
+
+
+" LSP
+let g:lsp_diagnostics_echo_cursor = 1
+let g:lsp_diagnostics_echo_delay = 0
+
+let g:lsp_diagnostics_highlights_delay = 0
+let g:lsp_completion_documentation_delay = 0
+
+autocmd FileType rust autocmd BufWritePre <buffer> LspDocumentFormatSync
+autocmd FileType typescript setlocal tagfunc=lsp#tagfunc
+
+if executable('typescript-language-server')
+    au User lsp_setup call lsp#register_server({
+      \ 'name': 'javascript support using typescript-language-server',
+      \ 'cmd': { server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
+      \ 'root_uri': { server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_directory(lsp#utils#get_buffer_path(), '.git/..'))},
+      \ 'allowlist': ['typescript', 'typescript.tsx', 'typescriptreact', 'javascript', 'javascript.jsx', 'javascriptreact']
+      \ })
+endif
+
+if executable('html-languageserver')
+  au User lsp_setup call lsp#register_server({
+      \ 'name': 'html-languageserver',
+      \ 'cmd': {server_info->[&shell, &shellcmdflag, 'html-languageserver --stdio']},
+      \ 'root_uri': { server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_directory(lsp#utils#get_buffer_path(), '.git/..'))},
+      \ 'allowlist': ['html'],
+      \ })
+endif
+
+if executable('css-languageserver')
+  au User lsp_setup call lsp#register_server({
+      \ 'name': 'css-languageserver',
+      \ 'cmd': {server_info->[&shell, &shellcmdflag, 'css-languageserver --stdio']},
+      \ 'root_uri': { server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_directory(lsp#utils#get_buffer_path(), '.git/..'))},
+      \ 'allowlist': ['css'],
+      \ })
+endif
+
+if executable('solargraph')
+  au User lsp_setup call lsp#register_server({
+              \ 'name': 'solargraph',
+              \ 'cmd': {server_info->[&shell, &shellcmdflag, 'solargraph stdio']},
+              \ 'initialization_options': {"diagnostics": "true"},
+              \ 'root_uri': { server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_directory(lsp#utils#get_buffer_path(), '.git/..'))},
+              \ 'allowlist': ['ruby'],
+              \ })
+endif
+
+if executable('vim-language-server')
+    au User lsp_setup call lsp#register_server({
+                \ 'name': 'vim-language-server',
+                \ 'cmd': {server_info->['vim-language-server', '--stdio']},
+                \ 'allowlist': ['vim'],
+                \ 'initialization_options': {
+                \   'vimruntime': $VIMRUNTIME,
+                \   'runtimepath': &rtp,
+                \ }})
+endif
+
+if executable('rls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'rls',
+        \ 'cmd': {server_info->['rustup', 'run', 'stable', 'rls']},
+        \ 'workspace_config': {'rust': {'clippy_preference': 'on'}},
+        \ 'root_uri': { server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_directory(lsp#utils#get_buffer_path(), '.git/..'))},
+        \ 'allowlist': ['rust'],
+        \ })
+endif
+
+nnoremap <silent> gd :LspDefinition<CR>
+nnoremap <silent> gD :LspDeclaration<CR>
+nnoremap <silent> gs :LspDocumentSymbolSearch<CR>
+nnoremap <silent> gS :LspWorkspaceSymbolSearch<CR>
+nnoremap <silent> gr :LspReferences<CR>
+nnoremap <silent> gi :LspImplementation<CR>
+nnoremap <silent> gt :LspTypeDefinition<CR>
+nnoremap <silent> K :LspHover<CR>
+nnoremap <silent> <F2> :LspRename<CR>
+nnoremap <silent> = :LspDocumentRangeFormat<CR>
+
+" Disabled due to slow performance, see https://github.com/prabirshrestha/vim-lsp/pull/1104
+"set foldlevelstart=20
+"set foldmethod=expr
+"  \ foldexpr=lsp#ui#vim#folding#foldexpr()
+"  \ foldtext=lsp#ui#vim#folding#foldtext()
