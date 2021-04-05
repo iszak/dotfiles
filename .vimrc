@@ -17,7 +17,6 @@ Plugin 'vim-airline/vim-airline'
 " Git Gutter
 Plugin 'airblade/vim-gitgutter'
 
-
 " Enable tab autocomplete
 Plugin 'ervandew/supertab'
 
@@ -26,6 +25,8 @@ Plugin 'prabirshrestha/asyncomplete.vim'
 Plugin 'prabirshrestha/asyncomplete-lsp.vim'
 
 Plugin 'prabirshrestha/vim-lsp'
+
+Plugin 'kien/ctrlp.vim'
 
 " JavaScript
 Plugin 'pangloss/vim-javascript'
