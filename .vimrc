@@ -166,11 +166,10 @@ set hidden
 :command Q q
 
 " Airline
-" Always display buffers
-let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#lsp#enabled = 1
 
 " Enable extensions
-let g:airline_extensions = ["branch"]
+let g:airline_extensions = ["lsp"]
 
 
 " Git Gutter
@@ -192,8 +191,9 @@ highlight GitGutterChangeDelete ctermfg=yellow
 let g:lsp_semantic_enabled = 1
 
 let g:lsp_diagnostics_float_cursor = 1
+let g:lsp_diagnostics_echo_cursor = 1
 
-let g:lsp_diagnostics_echo_delay = 0
+let g:lsp_diagnostics_float_delay = 0
 let g:lsp_diagnostics_highlights_delay = 0
 let g:lsp_completion_documentation_delay = 0
 
