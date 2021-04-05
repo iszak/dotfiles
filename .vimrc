@@ -188,14 +188,16 @@ highlight GitGutterChangeDelete ctermfg=yellow
 
 
 " LSP
-let g:lsp_diagnostics_echo_cursor = 1
-let g:lsp_diagnostics_echo_delay = 0
+let g:lsp_semantic_enabled = 1
 
+let g:lsp_diagnostics_float_cursor = 1
+
+let g:lsp_diagnostics_echo_delay = 0
 let g:lsp_diagnostics_highlights_delay = 0
 let g:lsp_completion_documentation_delay = 0
 
-autocmd FileType rust autocmd BufWritePre <buffer> LspDocumentFormatSync
-autocmd FileType typescript setlocal tagfunc=lsp#tagfunc
+setlocal tagfunc=lsp#tagfunc
+autocmd! BufWritePre *.rs LspDocumentFormatSync
 
 if executable('typescript-language-server')
     au User lsp_setup call lsp#register_server({
@@ -261,7 +263,7 @@ nnoremap <silent> gs :LspDocumentSymbolSearch<CR>
 nnoremap <silent> gS :LspWorkspaceSymbolSearch<CR>
 nnoremap <silent> gr :LspReferences<CR>
 nnoremap <silent> gi :LspImplementation<CR>
-nnoremap <silent> gt :LspTypeDefinition<CR>
+"nnoremap <silent> gt :LspTypeDefinition<CR>
 nnoremap <silent> K :LspHover<CR>
 nnoremap <silent> <F2> :LspRename<CR>
 nnoremap <silent> = :LspDocumentRangeFormat<CR>
