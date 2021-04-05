@@ -34,3 +34,6 @@ fi
 if [ -d "$HOME/.rbenv/bin" ]; then
   export PATH="$HOME/.rbenv/bin:$PATH"
 fi
+
+# Rust
+export RUST_BACKTRACE=1
