@@ -188,7 +188,7 @@ highlight GitGutterChangeDelete ctermfg=yellow
 
 
 " LSP
-let g:lsp_semantic_enabled = 1
+let g:lsp_semantic_enabled = 0
 
 let g:lsp_diagnostics_float_cursor = 1
 let g:lsp_diagnostics_echo_cursor = 1
