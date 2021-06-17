@@ -12,10 +12,10 @@ set -o vi
 . "$HOME/.exports"
 
 # Node.js
-NVM_PATH="$HOME/.nvm/nvm.sh"
-if [ -s "$NVM_PATH" ]; then
+export FNM_DIR="${HOME}/.fnm"
+if [ -s "${FNM_DIR}" ]; then
   # shellcheck source=./.nvm/nvm.sh
-  . "$NVM_PATH"
+  eval "$(fnm env)"
 fi
 
 # Ruby
