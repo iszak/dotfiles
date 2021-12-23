@@ -1,0 +1,7 @@
+rofi.kb-mode-next:                   Super+l
+rofi.kb-mode-previous:               Super+h
+rofi.kb-row-up:                      Super+k
+rofi.kb-row-down:                    Super+j
+
+rofi.kb-accept-entry:                Return
+rofi.kb-remove-char-back:            BackSpace
