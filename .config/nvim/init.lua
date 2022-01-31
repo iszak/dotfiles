@@ -1,6 +1,8 @@
 vim.fn['plug#begin']()
 
 vim.fn['plug#']('neovim/nvim-lspconfig')
+-- TODO: Add :TSUpdate
+vim.fn['plug#']('nvim-treesitter/nvim-treesitter', ':TSUpdate')
 
 -- Snippets
 vim.fn['plug#']('hrsh7th/vim-vsnip')
@@ -14,6 +16,9 @@ vim.fn['plug#']('hrsh7th/cmp-nvim-lsp')
 vim.fn['plug#']('nvim-lua/plenary.nvim')
 vim.fn['plug#']('nvim-telescope/telescope.nvim')
 
+-- Status line
+vim.fn['plug#']('nvim-lualine/lualine.nvim')
+
 -- Theme
 vim.fn['plug#']('altercation/vim-colors-solarized')
 
@@ -23,7 +28,45 @@ vim.fn['plug#end']()
 vim.g.solarized_termcolors = 256
 vim.cmd('colorscheme solarized')
 
+-- TODO: What does this do again?
 vim.api.nvim_set_keymap('n', '<Leader>w', ':write<CR>', {noremap = true})
+
+-- Treesitter
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = false,
+  },
+  incremental_selection = {
+    enable = true,
+  },
+  indent = {
+    enable = true
+  }
+}
+-- Folding
+vim.o.foldmethod = 'expr'
+vim.o.foldlevel = 20
+vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
+
+-- Status line
+require('lualine').setup {
+  options = {
+    icons_enabled = false,
+    component_separators = { left = '|', right = '|'},
+    section_separators = { left = '|', right = '|'},
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_c = {'filename'},
+    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_z = {'location'}
+  },
+  inactive_sections = {},
+  tabline = {},
+  extensions = {}
+}
 
 -- Finder shortcuts
 vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>Telescope find_files<cr>', {noremap = true})
@@ -33,17 +76,35 @@ vim.api.nvim_set_keymap('n', '<leader>fb', '<cmd>Telescope buffers<cr>', {norema
 vim.api.nvim_set_keymap('n', '<leader>fh', '<cmd>Telescope help_tags<cr>', {noremap = true})
 
 -- Finder
--- TODO: Configure
 require('telescope').setup{
   defaults = {
+    -- Default configuration for telescope goes here:
+    -- config_key = value,
     mappings = {
       i = {
+        -- map actions.which_key to <C-h> (default: <C-/>)
+        -- actions.which_key shows the mappings for your picker,
+        -- e.g. git_{create, delete, ...}_branch for the git_branches picker
         ["<C-h>"] = "which_key"
       }
     }
   },
-  pickers = {},
-  extensions = {}
+  pickers = {
+    -- Default configuration for builtin pickers goes here:
+    -- picker_name = {
+    --   picker_config_key = value,
+    --   ...
+    -- }
+    -- Now the picker_config_key will be applied every time you call this
+    -- builtin picker
+  },
+  extensions = {
+    -- Your extension configuration goes here:
+    -- extension_name = {
+    --   extension_config_key = value,
+    -- }
+    -- please take a look at the readme of the extension you want to configure
+  }
 }
 
 -- Autocomplete
@@ -184,13 +245,13 @@ vim.opt.signcolumn = 'yes'
 vim.opt.colorcolumn = '80,120'
 
 -- Remove sign column colour
-vim.cmd('highlight clear SignColumn')
+vim.cmd('highlight! clear SignColumn')
 
 -- Common typos
-vim.cmd(':command WQ wq')
-vim.cmd(':command Wq wq')
-vim.cmd(':command W w')
-vim.cmd(':command Q q')
+vim.cmd(':command! WQ wq')
+vim.cmd(':command! Wq wq')
+vim.cmd(':command! W w')
+vim.cmd(':command! Q q')
 
 -- Disable arrow keys in normal, visual, select and operator-pending modes
 vim.api.nvim_set_keymap('', '<Up>', '<NOP>', {noremap = true})
