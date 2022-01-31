@@ -41,3 +41,10 @@ FZF_COMPLETION_PATH="${FZF_PATH}/completion.${SHELL_NAME}"
 if [ -f "${FZF_COMPLETION_PATH}" ]; then
   . "${FZF_COMPLETION_PATH}"
 fi
+
+# GNU utils
+GNU_BIN="/usr/local/opt/coreutils/libexec/"
+if [ -d "${GNU_BIN}" ]; then
+  PATH="${GNU_BIN}gnubin/:${PATH}"
+  MANPATH="${GNU_BIN}gnuman:$MANPATH"
+fi
