@@ -19,30 +19,20 @@ export SSH_KEY_PATH="$HOME/.ssh/dsa_id"
 # Go
 export GOPATH=~/go
 export PATH="$PATH:$GOPATH/bin"
+export PATH="/usr/local/bin:$PATH"
 
-# Packer
-if [ -d "$HOME/.packer/packer" ]; then
-  export PATH="$HOME/.packer:$PATH"
-fi
+# Rust
+export RUST_BACKTRACE=1
 
 # Cargo
 if [ -d "$HOME/.cargo/bin" ]; then
   export PATH="$HOME/.cargo/bin:$PATH"
+  source $HOME/.cargo/env
 fi
 
 # rbenv
 if [ -d "$HOME/.rbenv/bin" ]; then
   export PATH="$HOME/.rbenv/bin:$PATH"
-fi
 
-# Rust
-export RUST_BACKTRACE=1
-
-# Android
-export ANDROID_HOME=$HOME/Android/Sdk
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/tools/bin
-export PATH=$PATH:$ANDROID_HOME/platform-tools
-export PATH=$PATH:/home/iszak/Workspace/carrot/android-studio/jre/bin/
-
+export FORCE_TTY=true
+export DEBUG_PRINT_LIMIT=262144
