@@ -29,12 +29,15 @@ if [ -f "$(which zoxide)" ]; then
 fi
 
 # ZFZ
-FZF_KEY_BINDING_PATH="/usr/share/doc/fzf/examples/key-bindings.${SHELL_NAME}"
+FZF_PATH="/usr/local/opt/fzf/shell/"
+# for linux /usr/share/fzf
+
+FZF_KEY_BINDING_PATH="${FZF_PATH}/key-bindings.${SHELL_NAME}"
 if [ -f "${FZF_KEY_BINDING_PATH}" ]; then
   . "${FZF_KEY_BINDING_PATH}"
 fi
 
-FZF_COMPLETION_PATH="/usr/share/doc/fzf/examples/completion.${SHELL_NAME}"
+FZF_COMPLETION_PATH="${FZF_PATH}/completion.${SHELL_NAME}"
 if [ -f "${FZF_COMPLETION_PATH}" ]; then
   . "${FZF_COMPLETION_PATH}"
 fi
