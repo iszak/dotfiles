@@ -1,4 +1,6 @@
 #!/bin/sh
 
-alias ls='ls --color=auto'
-alias grep='rg'
+alias ls="exa"
+alias cat="bat"
+alias du="dust"
+alias grep="rg -g '!*/bdd/*' -g '!*.spec.js' -g '!*.snap'"
