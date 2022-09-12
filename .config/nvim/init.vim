@@ -23,7 +23,6 @@ Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
-Plug 'tomasr/molokai'
 Plug 'altercation/vim-colors-solarized'
 
 call plug#end()
