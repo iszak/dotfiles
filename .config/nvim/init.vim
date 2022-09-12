@@ -25,6 +25,8 @@ Plug 'nvim-telescope/telescope.nvim'
 
 Plug 'altercation/vim-colors-solarized'
 
+Plug 'editorconfig/editorconfig-vim'
+
 call plug#end()
 
 " Theme
@@ -146,6 +148,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
+-- vim.api.nvim_command('autocmd BufWritePre *.{js,jsx,ts,tsx,rs,rb} lua vim.lsp.buf.format(nil, 1000)')
 
 -- Code completion
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
